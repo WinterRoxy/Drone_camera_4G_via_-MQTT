@@ -55,7 +55,7 @@ Below is a summary of the key files and their functions:
 
 ---
 
-### 5. `demo.py`
+### 5. `image_reciever.py`
 - **Purpose:**  
   This Python script runs on a PC and subscribes to the MQTT topic where the drone’s Slave device publishes the captured images. It decodes and saves the received image for further processing.
 - **Functionality:**  
@@ -70,7 +70,7 @@ Below is a summary of the key files and their functions:
 - **Purpose:**  
   This is a pre-trained YOLO model file used for image analysis (e.g., detecting people in the captured images). The model processes images received via MQTT (from `demo.py`).
 - **Functionality:**  
-  - Loaded by the image processing application (demo.py).
+  - Loaded by the image processing application (image_reciever.py).
   - Performs object detection to identify persons in the images.
   - Can be integrated into further automated processing or alert systems.
 
@@ -91,7 +91,7 @@ Below is a summary of the key files and their functions:
    - It then uploads the complete image to an MQTT broker over a 4G network.
 
 4. **Image Processing on PC:**
-   - The **`demo.py`** script subscribes to the MQTT topic and receives the uploaded image.
+   - The **`image_reciever.py`** script subscribes to the MQTT topic and receives the uploaded image.
    - The image is saved locally and processed by a YOLO model (loaded from **`best_train_800x600.pt`**) to detect persons.
    - The output (e.g., the number of detected people) can be used for further decision-making or alerts.
 
@@ -104,7 +104,7 @@ Below is a summary of the key files and their functions:
   - Libraries: ESP-NOW, PPP library, WiFi, and camera library (for ESP32-CAM)
   - SIM7600C modem library for PPPOS
 
-- **For Python image processing (demo.py):**
+- **For Python image processing (image_reciever.py):**
   - Python 3.x
   - `paho-mqtt` for MQTT communication
   - `roboflow` (if using Roboflow integration)
@@ -122,8 +122,8 @@ Below is a summary of the key files and their functions:
    - Flash **`Broadcast_slave`** onto the second ESP32 on the drone that is connected to the SIM7600C modem.
 
 2. **Image Processing:**
-   - Ensure the MQTT broker settings in `demo.py` are correctly configured.
-   - Run `demo.py` on your PC. The script will subscribe to the topic and process incoming images using the YOLO model (`best_train_800x600.pt`).
+   - Ensure the MQTT broker settings in `image_reciever.py` are correctly configured.
+   - Run `image_reciever.py` on your PC. The script will subscribe to the topic and process incoming images using the YOLO model (`best_train_800x600.pt`).
 
 3. **Monitoring:**
    - Use Serial Monitor on the ESP32 devices for debugging and status messages.
