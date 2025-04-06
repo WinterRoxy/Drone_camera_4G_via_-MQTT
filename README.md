@@ -18,6 +18,8 @@ Below is a summary of the key files and their functions:
 1. **Flight Control & Telemetry:**
    - The **`esp_flight_controller`** on the drone receives remote control commands (sent by `esp_remote_tx_rx`) and measures the drone’s flight parameters.
    - It sends back telemetry (e.g., orientation and battery status) to the remote controller, which then forwards the information to ESP RainMaker for remote monitoring.
+   - The system processes control signals received from the controller to navigate and stabilize the drone. The ESP32 recieve tilt angles and angular velocity data from the MPU6050 sensor to determine whether the drone is tilting or unbalanced. Based on this information, it adjusts the rotation speed of the corresponding propellers to restore balance
+   - When directional movement is desired, the ESP32 maps the received control signals to a specific tilt angle and controls the propeller speeds accordingly to tilt the drone in that direction, instead of maintaining level balance as before
 
 2. **Image Capture & Transmission:**
    - The **`Broadcast_master_esp_cam`** module on the ESP32-CAM captures images and splits the data into packets.
