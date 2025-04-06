@@ -37,7 +37,6 @@ Below is a summary of the key files and their functions:
 ---
 ## Pin Connection Diagram
 ![Image](https://github.com/user-attachments/assets/4f8f348c-4ff9-4ff9-bb6b-d0bd5b44d277)
-** **
   - In this setup, one ESP32 acts as the central controller, directly handling signal processing and control tasks on the drone. The control signals are transmitted to four ESCs (Electronic Speed Controllers), which then drive the BLDC motors responsible for spinning the propellers.
   - A second ESP32 is responsible for receiving image data transmitted from the ESP32-CAM. It then forwards this data via the SIM A7600C module, which functions as a network driver, sending the image data to an MQTT server over a 4G mobile network.
 ---
